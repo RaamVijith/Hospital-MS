@@ -1,0 +1,22 @@
+install APPlication
+$ yarn
+
+run APPlication
+$ yarn dev
+
+
+
+
+
+User api featch
+1-pages/vaccines/vaccineTable-(58)-             vccine api-(id,vaccine_name,vaccine_type,available_hospital)
+
+2-pages/hospitals/hospitalTable/-(59)-          hospital api(id,hospital_name,location,available_vaccine)
+
+3-pages/myVaccines/myVaccinesTable-(62)-        myVaccine api(id,doses,vaccine_date,vaccine_name,hospital)
+
+
+
+Hospital Api fetch
+
+pagesHospital/users/usersTable-(66)-            user api(user_id,name,gender,age,address.hospital)

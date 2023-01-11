@@ -7,27 +7,25 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import EventNoteIcon from '@mui/icons-material/EventNote';
-import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import VaccinesIcon from '@mui/icons-material/Vaccines';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { NavLink } from "react-router-dom";
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+
 
 
 const drawerWidth = 200;
 
 const listItems = [
-  { title: "Appointment", icon: <EventNoteIcon />, to: "/appointment" },
-  { title: "Hospitals", icon: <LocalHospitalIcon />, to: "/hospitals" },
-  { title: "Vaccines", icon: <VaccinesIcon />, to: "/vaccines" },
-  { title: "My Vaccines", icon: <VaccinesIcon />, to: "/myVaccine" },
-  { title: "Setting", icon: <SettingsIcon />, to: "/setting" },
-  { title: "My Account", icon: <AccountCircleIcon />, to: "/myAccount" },
+  { title: "Users", icon: <AccountCircleIcon />, to: "/userAD" },
+  { title: "Vaccines", icon: <VaccinesIcon />, to: "/vaccinesAD" },
+  { title: "Hospitals", icon: <LocalHospitalIcon />, to: "/hospitalsAD" },
 
 
 ];
 
-const SideNav = () => {
+const SideNavAdmin = () => {
   return (
     <Drawer
       sx={{
@@ -42,17 +40,6 @@ const SideNav = () => {
       anchor="left"
     >
       <Toolbar />
-      <div style={{backgroundColor:'#d8ebf4',height:'35%',width:'100%',justifyContent:'center',alignContent:'center',alignItems:'center',alignSelf:'center'}}>
-        <div style={{padding:'5%',height:'80%'}}>
-        <img style={{width:"100%", height:'100%',borderRadius:'50%'}} src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80" alt="React Image" />
-        </div>
-        <div>
-          <b>First_Name</b>
-          <br/>
-          <b>Last_Name</b>
-        </div>
-       
-      </div>
       <List>
         {listItems.map((item) => (
           <>
@@ -80,4 +67,4 @@ const SideNav = () => {
   );
 };
 
-export default SideNav;
+export default SideNavAdmin;

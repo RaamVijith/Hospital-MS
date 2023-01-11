@@ -9,7 +9,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from "react-router-dom";
 
 
-const Navbar = () => {
+const NavbarAdmin = () => {
   let navigate = useNavigate(); 
   const routeChange = () =>{ 
     
@@ -23,7 +23,6 @@ const Navbar = () => {
       sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, width: "100%" }}
     >
       <Toolbar>
-     
       <Typography variant="h4" component="div" sx={{ flexGrow: 1,fontWeight:"900"}}>
                     VACLAB
                     </Typography>
@@ -43,4 +42,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarAdmin;
