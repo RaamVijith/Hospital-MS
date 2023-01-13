@@ -156,6 +156,10 @@ const handleChangeIndex = (index: number) => {
                       </RadioGroup>
                 </FormControl>
 
+                <TextField id="outlined-basic" label="Age" sx={{ marginTop: "10px", marginBottom: "2px",alignSelf:'center' }} variant="outlined" fullWidth />
+                <br />            
+                <TextField id="outlined-basic" label="Phone Number" sx={{ marginTop: "10px", marginBottom: "2px" }} variant="outlined" fullWidth  />
+                <br />
                 <TextField id="outlined-basic" label="Address" sx={{ marginTop: "10px", marginBottom: "2px",alignSelf:'center' }} variant="outlined" fullWidth />
                 <br />            
                 <TextField id="outlined-basic" label="Email" sx={{ marginTop: "10px", marginBottom: "2px" }} variant="outlined" fullWidth  />
@@ -191,11 +195,10 @@ const handleChangeIndex = (index: number) => {
                     <TextField id="outlined-basic" label="Email" sx={{ marginTop: "10px", marginBottom: "2px" }} variant="outlined" fullWidth />
                     <br />
 
-                    <TextField id="outlined-basic" label="Create Password" sx={{ marginTop: "10px", marginBottom: "2px" }} variant="outlined" fullWidth />
+                    <TextField id="outlined-basic" label="Password" sx={{ marginTop: "10px", marginBottom: "2px" }} variant="outlined" fullWidth />
                     <br />
 
-                    <TextField id="outlined-basic" label="Conform Password" sx={{ marginTop: "10px", marginBottom: "2px" }} variant="outlined" fullWidth />
-                    <br />
+                    
 
                     <Button
                         variant="contained"
@@ -241,7 +244,10 @@ const handleChangeIndex = (index: number) => {
                                   
                                   </RadioGroup>
                         </FormControl>
-
+                        <TextField id="outlined-basic" label="Age" sx={{ marginTop: "10px", marginBottom: "2px",alignSelf:'center' }} variant="outlined" fullWidth />
+                        <br />            
+                        <TextField id="outlined-basic" label="Phone Number" sx={{ marginTop: "10px", marginBottom: "2px" }} variant="outlined" fullWidth  />
+                        <br />
                         <TextField id="outlined-basic" label="Address" sx={{ marginTop: "10px", marginBottom: "2px",alignSelf:'center' }} variant="outlined" fullWidth />
                         <br />
                             

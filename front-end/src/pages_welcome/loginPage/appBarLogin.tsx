@@ -3,6 +3,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import { useNavigate } from "react-router-dom";
+import logo from "../../../images/logo.png"
 
 const AppbarLogin=()=>{
 
@@ -27,8 +28,9 @@ const routeContact = () =>{
             <div style={{height:60}}>
             <AppBar position="fixed" color="primary" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, width: "100%" }} >
                 <Toolbar>
-                    
-                    <Typography variant="h4" component="div" sx={{ flexGrow: 1,fontWeight:"900",paddingLeft:5 }}>
+                <img style={{height:'3%',width:'3%', marginRight:'0.5%'}} src={logo} alt="React Image" />
+
+                    <Typography variant="h4" component="div" sx={{ flexGrow: 1,fontWeight:"900" }}>
                     VACLAB
                     </Typography>
 

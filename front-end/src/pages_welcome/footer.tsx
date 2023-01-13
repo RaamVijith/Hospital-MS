@@ -7,7 +7,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 const Footer=()=>{
     return(
         <div style={{ backgroundColor:'#2c73d2',}}>
-        <div style={{height:170,width:'100%', display:'flex',paddingTop:20}}>
+        <div style={{height:'2%',width:'100%', display:'flex',paddingTop:5}}>
             <div style={{marginLeft:'18%'}}>
                 <b style={{color:'white',fontSize:35}}>VACLAB</b>
                 <br/>

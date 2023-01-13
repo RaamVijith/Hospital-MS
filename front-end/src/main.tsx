@@ -28,6 +28,8 @@ import LayoutAdmin from "./components/layoutAdmin";
 import HospitalsAD from "./pagesAdmin/hospitals";
 import UserAD from "./pagesAdmin/users";
 import VaccinesAD from "./pagesAdmin/vaccines";
+import SettingAD from "./pagesAdmin/setting"
+import MyAccountAD from "./pagesAdmin/myAccount"
 
 import { QueryClient, QueryClientProvider } from "react-query";
 import ShopContextProvider from "./context/ShopContext";
@@ -77,6 +79,8 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
             <Route path="/userAD" element={<LayoutAdmin><UserAD/></LayoutAdmin>} />
             <Route path="/vaccinesAD" element={<LayoutAdmin><VaccinesAD/></LayoutAdmin>} />
             <Route path="/hospitalsAD" element={<LayoutAdmin><HospitalsAD/></LayoutAdmin>} />
+            <Route path="/settingAD" element={<LayoutAdmin><SettingAD/></LayoutAdmin>} />
+            <Route path="/myAccountAD" element={<LayoutAdmin><MyAccountAD/></LayoutAdmin>} />
 
 
           </Route>

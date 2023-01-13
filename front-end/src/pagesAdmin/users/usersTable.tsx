@@ -19,7 +19,6 @@ const columns: IColumn[] = [
   { id: "mobile no", label: "Mobile No" },
   { id: "gender", label: "Gender" },
   { id: "age", label: "Age" },
-  { id: "hospital", label: "Hospital" },
 
 ];
 

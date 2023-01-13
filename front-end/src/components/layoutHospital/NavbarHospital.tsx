@@ -7,6 +7,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from "react-router-dom";
+import logo from "../../../images/logo.png"
+
 
 const NavbarHospital = () => {
   let navigate = useNavigate(); 
@@ -22,6 +24,8 @@ const NavbarHospital = () => {
       sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, width: "100%" }}
     >
       <Toolbar>
+      <img style={{height:'3%',width:'3%', marginRight:'0.5%'}} src={logo} alt="React Image" />
+
       <Typography variant="h4" component="div" sx={{ flexGrow: 1,fontWeight:"900"}}>
                     VACLAB
                     </Typography>

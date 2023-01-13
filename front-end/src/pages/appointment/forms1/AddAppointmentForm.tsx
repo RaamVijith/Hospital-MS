@@ -113,23 +113,7 @@ const AddAppointmentForm = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={6}>
-              <FormControl fullWidth>
-                <InputLabel>status</InputLabel>
-                <Select
-                  onChange={handleChange}
-                  fullWidth
-                  name="status"
-                  value={values.status}
-                >
-                  {STATUS.map((item, index) => (
-                    <MenuItem key={index} value={item}>
-                      {item}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Grid>
+           
             
             <Grid item xs={6}>
             <FormControl fullWidth>

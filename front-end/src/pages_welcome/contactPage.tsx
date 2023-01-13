@@ -10,8 +10,15 @@ import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import Footer from "./footer";
 import {Paper,Table,TableBody,TableCell,TableContainer,TableHead,TablePagination,TableRow,TextField,Button,Dialog,DialogTitle,DialogContent,DialogActions,FormControl,InputLabel,Select,MenuItem,} from "@mui/material";
+import welcomePage from "../../images/contact.jpg";
+import logo from "../../images/logo.png"
 
 const ContactPage=()=>{
+
+    var sectionStyle = {
+        backgroundImage: "url(" + welcomePage + ")",
+        
+    };
     let navigate = useNavigate(); 
     const routeAbout = () =>{ 
       
@@ -28,11 +35,12 @@ const ContactPage=()=>{
         let path = `/login`; 
         navigate(path);}
     return(
-        <div>
-    <AppBar position="fixed" color="primary" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, width: "100%" }} >
+        <div >
+            <AppBar position="fixed" color="primary" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, width: "100%" }} >
                 <Toolbar>
-                    
-                    <Typography variant="h4" component="div" sx={{ flexGrow: 1,fontWeight:"900",paddingLeft:5 }}>
+                <img style={{height:'3%',width:'3%', marginRight:'0.5%'}} src={logo} alt="React Image" />
+
+                    <Typography variant="h4" component="div" sx={{ flexGrow: 1,fontWeight:"900"}}>
                     VACLAB
                     </Typography>
 
@@ -56,9 +64,9 @@ const ContactPage=()=>{
 
                 </Toolbar>
             </AppBar>
-
-            <div style={{width:'30%',marginTop:'3%',marginLeft:'35%',padding:40,borderRadius:10}}>
-            <Typography variant="h4" gutterBottom style={{color:'gray'}}>Contact us</Typography>  
+            <div style={ sectionStyle }>
+            <div style={{width:'30%',marginTop:'4%',marginLeft:'35%',paddingBottom:'5%',paddingTop:'1.8%',borderRadius:10}}>
+            <Typography variant="h4" gutterBottom style={{color:'black'}}>Contact us</Typography>  
 
             <TextField id="outlined-basic" label="Your Name" sx={{ marginTop: "10px", marginBottom: "10px",alignSelf:'center' }} variant="outlined" fullWidth />
             <br />            
@@ -77,6 +85,7 @@ const ContactPage=()=>{
             </Button>
             </div>
             <Footer/>
+            </div>
         </div>
     )
 }

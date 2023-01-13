@@ -1,16 +1,20 @@
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import SettingsIcon from '@mui/icons-material/Settings';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from "react-router-dom";
-import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import Footer from "./footer";
+import about from "../../images/about1.jpg";
+import logo from "../../images/logo.png"
 
 const AboutPage=()=>{
+    var sectionStyle = {
+        width: "100%",
+        height:"100%",
+        backgroundImage: "url(" + about + ")",
+        marginTop:"-50%"
+        
+    };
     let navigate = useNavigate(); 
     const routeAbout = () =>{ 
       
@@ -28,11 +32,12 @@ const AboutPage=()=>{
         navigate(path);
       }
     return(
-        <div>
+        <div >
            <AppBar position="fixed" color="primary" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, width: "100%" }} >
                 <Toolbar>
-                    
-                    <Typography variant="h4" component="div" sx={{ flexGrow: 1,fontWeight:"900",paddingLeft:5 }}>
+                <img style={{height:'3%',width:'3%', marginRight:'0.5%'}} src={logo} alt="React Image" />
+
+                    <Typography variant="h4" component="div" sx={{ flexGrow: 1,fontWeight:"900" }}>
                     VACLAB
                     </Typography>
 
@@ -59,13 +64,11 @@ const AboutPage=()=>{
 
 
 
+            <div style={ sectionStyle }>
 
-
-            <div>
-            <Typography variant="h3" gutterBottom style={{color:'gray',marginTop:100,marginLeft:"42%",fontWeight:'700'}}>About Us</Typography>  
-          <Divider />
-            </div>
-            <div style={{color:'gray',width:"50%", marginLeft:"30%",marginTop:50,marginBottom:'4.6%'}}>
+            <div style={{paddingTop:'50%'}}>
+            <Typography variant="h3" gutterBottom style={{color:'black',marginTop:100,marginLeft:"42%",fontWeight:'700'}}>About Us</Typography>  
+            <div style={{color:'black',width:"50%", marginLeft:"30%",marginTop:50,marginBottom:'8.2%'}}>
                 <b style={{fontSize:50}}>We Are Happy To Serve You!</b>
                 <br/>
                 <b style={{fontSize:20}}>Getting your Covid-19 vaccine safe more relaiable way through make your appointments with us.</b>
@@ -79,6 +82,9 @@ const AboutPage=()=>{
 
             </div>
             <Footer/>
+            </div>
+
+            </div>
         </div>
     )
 }

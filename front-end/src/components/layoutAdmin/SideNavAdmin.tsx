@@ -21,6 +21,8 @@ const listItems = [
   { title: "Users", icon: <AccountCircleIcon />, to: "/userAD" },
   { title: "Vaccines", icon: <VaccinesIcon />, to: "/vaccinesAD" },
   { title: "Hospitals", icon: <LocalHospitalIcon />, to: "/hospitalsAD" },
+  { title: "Setting", icon: <VaccinesIcon />, to: "/settingAD" },
+  { title: "My Account", icon: <LocalHospitalIcon />, to: "/myAccountAD" },
 
 
 ];
