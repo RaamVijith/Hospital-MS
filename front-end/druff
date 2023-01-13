@@ -8,15 +8,17 @@ $ yarn dev
 
 
 
-User api featch
-1-pages/vaccines/vaccineTable-(58)-             vccine api-(id,vaccine_name,vaccine_type,available_hospital)
+User api featch******************************
 
-2-pages/hospitals/hospitalTable/-(59)-          hospital api(id,hospital_name,location,available_vaccine)
+pages/hospitals/hospitalTable/-(62)-          hospital api(_id,name,email,address,available_vaccine)
 
-3-pages/myVaccines/myVaccinesTable-(62)-        myVaccine api(id,doses,vaccine_date,vaccine_name,hospital)
-
+pages/vaccines/vaccineTable-(59)-             vccine api-(_id,name,quantity,type,hospital)
 
 
-Hospital Api fetch
+pages/myVaccines/myVaccinesTable-(62)-        myVaccine api(_id,doses,date,name,hospital)
 
-pagesHospital/users/usersTable-(66)-            user api(user_id,name,gender,age,address.hospital)
+
+
+Hospital Api fetch**********************************
+
+pagesHospital/users/usersTable-(66)-            user api(_id,first_name,last_name,email,mobile_no,gender,age,address.hospital)

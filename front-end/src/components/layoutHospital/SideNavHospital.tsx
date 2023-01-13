@@ -41,6 +41,18 @@ const SideNavHospital = () => {
       anchor="left"
     >
       <Toolbar />
+
+  
+{/** User photo components */}
+<div style={{backgroundColor:'#d8ebf4',height:'35%',width:'100%',justifyContent:'center',alignContent:'center',alignItems:'center',alignSelf:'center'}}>
+        <div style={{padding:'5%',height:'80%'}}>
+            <img style={{width:"100%", height:'100%',borderRadius:'50%'}} src="https://img.freepik.com/premium-vector/hospital-building-isolated-modern-medical-clinic-center-clipart_101884-663.jpg?w=2000" alt="React Image" />
+        </div>
+        <div style={{marginLeft:'10%',color:'gray'}}>
+              <b style={{fontSize:25}}>Hospital Name</b>
+          
+        </div>       
+      </div>
       <List>
         {listItems.map((item) => (
           <>

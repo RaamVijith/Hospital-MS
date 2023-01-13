@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useReducer } from "react";
-
+import { useQuery } from "react-query";
+import { ICompany } from "../api/client";
+import { getAllCompanies } from "../api/company";
 export interface IAction {
   type:
     | "SET_SNACKBAR"
@@ -7,7 +9,10 @@ export interface IAction {
     | "SET_EDIT_OPEN"
     | "SET_DELETE_OPEN"
     | "SET_LOADING"
-    | "SET_ADD_OPEN";
+    | "SET_ADD_OPEN"
+    | "SET_COMPANIES"
+    | "SET_PARAMS"
+    | "RESET_PARAMS";
 
   payload: any;
 }
@@ -25,6 +30,11 @@ export interface IGlobalState {
   setAddModalOpen: (value: boolean) => void;
   loading: boolean;
   setLoading: (value: boolean) => void;
+  companies: ICompany[];
+  setComapnies: (value: ICompany[]) => void;
+  params: any;
+  setParams: (value: any) => void;
+  resetParams: (value: any) => void;
 }
 
 const initialState: IGlobalState = {
@@ -40,6 +50,11 @@ const initialState: IGlobalState = {
   setAddModalOpen: () => {},
   loading: false,
   setLoading: () => {},
+  companies: [],
+  setComapnies: () => {},
+  params: {},
+  setParams: () => {},
+  resetParams: () => {},
 };
 
 const globalContext = createContext(initialState);
@@ -81,6 +96,21 @@ function globalReducer(state: IGlobalState, action: IAction): IGlobalState {
         ...state,
         addModalOpen: action.payload,
       };
+    case "SET_COMPANIES":
+      return {
+        ...state,
+        companies: action.payload,
+      };
+    case "SET_PARAMS":
+      return {
+        ...state,
+        params: { ...state.params, ...action.payload },
+      };
+    case "RESET_PARAMS":
+      return {
+        ...state,
+        params: action.payload,
+      };
     default:
       return state;
   }
@@ -106,6 +136,15 @@ function useGlobalReducer() {
   const setAddModalOpen = (value: boolean) => {
     dispatch({ type: "SET_ADD_OPEN", payload: value });
   };
+  const setComapnies = (value: ICompany[]) => {
+    dispatch({ type: "SET_COMPANIES", payload: value });
+  };
+  const setParams = (value: any) => {
+    dispatch({ type: "SET_PARAMS", payload: value });
+  };
+  const resetParams = (value: any) => {
+    dispatch({ type: "RESET_PARAMS", payload: value });
+  };
   return {
     ...state,
     setSnackOpen,
@@ -114,6 +153,9 @@ function useGlobalReducer() {
     setDeleteModalOpen,
     setAddModalOpen,
     setLoading,
+    setComapnies,
+    setParams,
+    resetParams,
   };
 }
 
@@ -121,6 +163,9 @@ export default function GlobalContextProvider({
   children,
 }: React.PropsWithChildren<{}>) {
   const globalState = useGlobalReducer();
+  const { data } = useQuery("all companies", getAllCompanies, {
+    onSuccess: (data) => globalState.setComapnies(data.companies),
+  });
   return (
     <globalContext.Provider value={globalState}>
       {children}

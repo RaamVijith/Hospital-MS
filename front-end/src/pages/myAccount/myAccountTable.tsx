@@ -107,10 +107,6 @@ const handleClose = (type: String) => {
   return(
 <div>
 
-
-
-
-
 {/**Edit item Dialog */}
 
 <Dialog open={open.edit} onClose={handleClose}>
@@ -236,7 +232,8 @@ const handleClose = (type: String) => {
 
     <div>
  <Paper sx={{ width: '30%', overflow: 'hidden',marginLeft:'30%',marginTop:'2%',justifySelf:'center' }}>
- 
+
+
     <div style={{display:'flex',marginLeft:'5%',justifyContent:'space-around'}}>
           <div>
             <br/>

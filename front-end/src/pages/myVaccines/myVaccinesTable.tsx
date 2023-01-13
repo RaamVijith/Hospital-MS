@@ -91,12 +91,10 @@ const MyVaccinesTable=()=> {
         </TableHead>
         <TableBody>
           {tableData.map((row:any) => (
-            <StyledTableRow key={row.id}>
-              <StyledTableCell component="th" scope="row">
-                {row.vaccine_date}
-              </StyledTableCell>
+            <StyledTableRow key={row._id}>
+              <StyledTableCell component="th" scope="row">{row.date}</StyledTableCell>
               <StyledTableCell >{row.doses}</StyledTableCell>
-              <StyledTableCell >{row.vaccine_name}</StyledTableCell>
+              <StyledTableCell >{row.name}</StyledTableCell>
               <StyledTableCell >{row.id}</StyledTableCell>
               <StyledTableCell >{row.hospital}</StyledTableCell>
 

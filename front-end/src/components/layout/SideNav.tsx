@@ -23,6 +23,8 @@ const listItems = [
   { title: "My Vaccines", icon: <VaccinesIcon />, to: "/myVaccine" },
   { title: "Setting", icon: <SettingsIcon />, to: "/setting" },
   { title: "My Account", icon: <AccountCircleIcon />, to: "/myAccount" },
+  { title: "Demo", icon: <AccountCircleIcon />, to: "/demo" },
+
 
 
 ];
@@ -42,17 +44,19 @@ const SideNav = () => {
       anchor="left"
     >
       <Toolbar />
+
+{/** User photo */}
       <div style={{backgroundColor:'#d8ebf4',height:'35%',width:'100%',justifyContent:'center',alignContent:'center',alignItems:'center',alignSelf:'center'}}>
         <div style={{padding:'5%',height:'80%'}}>
-        <img style={{width:"100%", height:'100%',borderRadius:'50%'}} src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80" alt="React Image" />
+            <img style={{width:"100%", height:'100%',borderRadius:'50%'}} src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80" alt="React Image" />
         </div>
-        <div>
-          <b>First_Name</b>
-          <br/>
-          <b>Last_Name</b>
-        </div>
-       
+        <div style={{marginLeft:'20%',color:'gray'}}>
+              <b style={{fontSize:25}}>User Name</b>
+          
+        </div>       
       </div>
+
+
       <List>
         {listItems.map((item) => (
           <>

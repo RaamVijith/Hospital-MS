@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 const MyVaccines = () => {
   return (
     <div>
-      <Typography variant="h4" gutterBottom style={{color:'gray'}}><b>MY VACCINES</b></Typography>  
+      <Typography variant="h4" gutterBottom style={{color:'gray'}}><b>VACCINES</b></Typography>  
           <Divider /> 
 
       <VaccinesTable/>

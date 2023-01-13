@@ -36,7 +36,6 @@ const Footer=()=>{
 
         </div>
         <Divider />
-        <br/>
 
         <div>
         <b style={{color:'white',fontSize:20,marginLeft:"35%"}}>    Copyright @ 2023 All right reserved | VAVLAB</b>

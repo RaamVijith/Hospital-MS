@@ -1,10 +1,10 @@
 import AddButton from "../../components/buttons/AddButton";
-import ColumnGroupingTable from "./myAccountTable";
+import MyAccountTable from "./myAccountTable";
 
 const MyAccount = () => {
   return (
     <div>
-     <ColumnGroupingTable/>
+     <MyAccountTable/>
     </div>
   );
 };

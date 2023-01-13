@@ -1,19 +1,21 @@
-import AddButton from "../../components/buttons/AddButton";
-import VaccineTableHP from "./vaccinesTable";
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
+import AddButton from "../../components/buttons/AddButton";
+import AddAppointmentModal from "./modals1/AddAppointmentModal";
+import EditAppointmentModel from "./modals1/EditAppointmentModal";
+import VaccineTableHP from './vaccinesTable';
 
 const VaccinesHP = () => {
   return (
-    <div>
+     <div>
       <Typography variant="h4" gutterBottom style={{color:'gray'}}>Vaccines</Typography>  
-          <Divider /> 
+          <Divider />
+          <AddButton title="add new Vaccines" />
+   
 
+      <EditAppointmentModel/>
+      <AddAppointmentModal/>
       <VaccineTableHP/>
-
-      
-
-     
     </div>
   );
 };

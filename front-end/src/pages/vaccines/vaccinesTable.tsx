@@ -29,15 +29,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-
+{/** 
 function createData(
-  id:string,
-  vaccine_name: string,
-  vaccine_type:string,
-  available_hospital: string,
+  _id:string,
+  name: string,
+  type:string,
+  hospital: string,
 
 ) {
-  return { id,vaccine_name,available_hospital};
+  return { _id,name,type,hospital};
 }
 
 const rows = [
@@ -45,12 +45,13 @@ const rows = [
   createData('002V','fizer',"Covid-19",'Akp hospital,batti hospital,kalmunai hospital'),
   createData('003V','poliyo',"Covid-19",'Akp hospital,batti hospital'),
 
-];
+];*/}
+
 
 const VaccinesTable=()=> {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [tableData, setTableData] = useState([rows])
+  const [tableData, setTableData] = useState([])
 
 
 //fetch API Hear************************************************
@@ -84,12 +85,10 @@ const VaccinesTable=()=> {
         </TableHead>
         <TableBody>
           {tableData.map((row:any) => (
-            <StyledTableRow key={row.id}>
-              <StyledTableCell component="th" scope="row">
-                {row.vaccine_name}
-              </StyledTableCell>
-              <StyledTableCell >{row.vaccine_type}</StyledTableCell>
-              <StyledTableCell >{row.available_hospital}</StyledTableCell>
+            <StyledTableRow key={row._id}>
+              <StyledTableCell component="th" scope="row">{row.name}</StyledTableCell>
+              <StyledTableCell >{row.type}</StyledTableCell>
+              <StyledTableCell >{row.hospital}</StyledTableCell>
         
             </StyledTableRow>
           ))}
@@ -99,7 +98,7 @@ const VaccinesTable=()=> {
      <TablePagination
      rowsPerPageOptions={[10, 25, 100]}
      component="div"
-     count={rows.length}
+     count={tableData.length}
      rowsPerPage={rowsPerPage}
      page={page}
      onPageChange={handleChangePage}

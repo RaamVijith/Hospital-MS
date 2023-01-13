@@ -1,13 +1,22 @@
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
 import AddButton from "../../components/buttons/AddButton";
-import UsersTable from "../../pagesHoapital/users/usersTable";
-import UserTableAD from "./usersTable";
+import AddAppointmentModal from "./modals1/AddAppointmentModal";
+import EditAppointmentModel from "./modals1/EditAppointmentModal";
+import UsersTableAD from './usersTable';
 
-UsersTable
 const UserAD = () => {
   return (
     <div>
-     {/*<UserTableAD/> */}
-    <UsersTable/>
+      <Typography variant="h4" gutterBottom style={{color:'gray',marginBottom:'2%'}}>Users</Typography>  
+          <Divider />
+          <Divider />
+
+   
+
+      <EditAppointmentModel/>
+      <UsersTableAD/>
+
     </div>
   );
 };

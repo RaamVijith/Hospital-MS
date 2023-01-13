@@ -62,10 +62,10 @@ const AboutPage=()=>{
 
 
             <div>
-            <Typography variant="h2" gutterBottom style={{color:'gray',marginTop:100,marginLeft:"42%",fontWeight:'700'}}>About Us</Typography>  
+            <Typography variant="h3" gutterBottom style={{color:'gray',marginTop:100,marginLeft:"42%",fontWeight:'700'}}>About Us</Typography>  
           <Divider />
             </div>
-            <div style={{color:'gray',width:"50%", marginLeft:"30%",marginTop:50,marginBottom:25}}>
+            <div style={{color:'gray',width:"50%", marginLeft:"30%",marginTop:50,marginBottom:'4.6%'}}>
                 <b style={{fontSize:50}}>We Are Happy To Serve You!</b>
                 <br/>
                 <b style={{fontSize:20}}>Getting your Covid-19 vaccine safe more relaiable way through make your appointments with us.</b>

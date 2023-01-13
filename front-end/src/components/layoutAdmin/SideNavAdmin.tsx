@@ -40,6 +40,18 @@ const SideNavAdmin = () => {
       anchor="left"
     >
       <Toolbar />
+
+      
+{/** User photo components */}
+<div style={{backgroundColor:'#d8ebf4',height:'35%',width:'100%',justifyContent:'center',alignContent:'center',alignItems:'center',alignSelf:'center'}}>
+        <div style={{padding:'5%',height:'80%'}}>
+            <img style={{width:"100%", height:'100%',borderRadius:'50%'}} src="https://www.pngmart.com/files/21/Admin-Profile-Vector-PNG-Clipart.png" alt="React Image" />
+        </div>
+        <div style={{marginLeft:'10%',color:'gray'}}>
+              <b style={{fontSize:25}}>Admin Name</b>
+          
+        </div>       
+      </div>
       <List>
         {listItems.map((item) => (
           <>

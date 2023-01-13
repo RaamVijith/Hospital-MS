@@ -32,26 +32,29 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 function createData(
-  hospital_id:string,
-  hospital_name: string,
-  location: string,
+  _id:string,
+  name: string,
+  email:string,
+  address: string,
   available_vaccine: string,
 ) {
-  return { hospital_id,hospital_name,location,available_vaccine };
+  return { _id,name,email,address,available_vaccine};
 }
 
+{/**
 const rows = [
   createData('001','Akp Hospital','kalmunai road, akkaraipattu','fizer, sinoform,polio'),
   createData('002','Batti Hospital','Batti road, akkaraipattu','fizer, sinoform,polio'),
   createData('003','Batti Hospital','Batti road, akkaraipattu','fizer, sinoform,polio'),
   createData('004','Batti Hospital','Batti road, akkaraipattu','fizer, sinoform,polio'),
 ];
+ */}
 
 
 const HospitalTable=()=> {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [tableData, setTableData] = useState([rows])
+  const [tableData, setTableData] = useState([])
 
 
   //fetch API Hear************************************************
@@ -94,11 +97,9 @@ const HospitalTable=()=> {
         </TableHead>
         <TableBody>
           {tableData.map((row:any) => (
-            <StyledTableRow key={row.id}>
-              <StyledTableCell component="th" scope="row">
-                {row.hospital_name}
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.location}</StyledTableCell>
+            <StyledTableRow key={row._id}>
+              <StyledTableCell component="th" scope="row">{row.name}</StyledTableCell>
+              <StyledTableCell align="right">{row.address}</StyledTableCell>
               <StyledTableCell align="right">{row.available_vaccine}</StyledTableCell>
         
             </StyledTableRow>
@@ -109,7 +110,7 @@ const HospitalTable=()=> {
      <TablePagination
      rowsPerPageOptions={[10, 25, 100]}
      component="div"
-     count={rows.length}
+     count={tableData.length}
      rowsPerPage={rowsPerPage}
      page={page}
      onPageChange={handleChangePage}

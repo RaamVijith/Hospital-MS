@@ -15,6 +15,7 @@ import AboutPage from "./pages_welcome/aboutPage";
 import ContactPage from "./pages_welcome/contactPage";
 import RegisterPage from "./pages_welcome/registerPage";
 import MyVaccines from "./pages/myVaccines";
+import Demo from "./pages/demo";
 
 import LayoutHospital from "./components/layoutHospital";
 import AppointmentHP from "./pagesHoapital/appointment";
@@ -28,19 +29,36 @@ import HospitalsAD from "./pagesAdmin/hospitals";
 import UserAD from "./pagesAdmin/users";
 import VaccinesAD from "./pagesAdmin/vaccines";
 
+import { QueryClient, QueryClientProvider } from "react-query";
+import ShopContextProvider from "./context/ShopContext";
+import UsersContextProvider from "./context/UsersContext";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      retry: false,
+    },
+  },
+});
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   
   <React.StrictMode>
-    <GlobalContextProvider>
-      <BrowserRouter>
-        <Routes>
+  <QueryClientProvider client={queryClient}>
+      <GlobalContextProvider>
+        <ShopContextProvider>   
+          <UsersContextProvider> 
+          <BrowserRouter>
+             <Routes>
           <Route element={<App />}>
 
              <Route path="/" element={<WelcomePage/>} />
              <Route path="/login" element={<LoginPage/>} />  
              <Route path="/about" element={<AboutPage/>} />             
              <Route path="/contact" element={<ContactPage/>} /> 
-             <Route path="/register" element={<RegisterPage/>} />    
+             <Route path="/register" element={<RegisterPage/>} />  
 
             <Route path="/appointment" element={<Layout><Appointment/></Layout>} />
             <Route path="/hospitals" element={<Layout><Hospitals/></Layout>} />
@@ -48,6 +66,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
             <Route path="/myVaccine" element={<Layout><MyVaccines/></Layout>} />
             <Route path="/setting" element={<Layout><Setting/></Layout>} />
             <Route path="/myAccount" element={<Layout><MyAccount/></Layout>} />
+            <Route path="/demo" element={<Layout><Demo/></Layout>} />    
 
             <Route path="/appointmentHP" element={<LayoutHospital><AppointmentHP/></LayoutHospital>} />
             <Route path="/userHP" element={<LayoutHospital><UserHP/></LayoutHospital>} />
@@ -61,8 +80,11 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 
 
           </Route>
-        </Routes>
-      </BrowserRouter>
-    </GlobalContextProvider>
+            </Routes>
+         </BrowserRouter>
+         </UsersContextProvider>  
+      </ShopContextProvider>
+      </GlobalContextProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );

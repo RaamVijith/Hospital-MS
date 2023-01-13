@@ -57,27 +57,21 @@ const ContactPage=()=>{
                 </Toolbar>
             </AppBar>
 
-            <div style={{width:'30%',marginTop:100,marginLeft:50,border: '1px solid gray',padding:40,borderRadius:10}}>
+            <div style={{width:'30%',marginTop:'3%',marginLeft:'35%',padding:40,borderRadius:10}}>
+            <Typography variant="h4" gutterBottom style={{color:'gray'}}>Contact us</Typography>  
 
-            <TextField id="outlined-basic" label="Your Name" sx={{ marginTop: "10px", marginBottom: "10px",alignSelf:'center' }} variant="outlined" fullWidth
-                       />
-            <br />
-            
-            <TextField id="outlined-basic" label="Your Email" sx={{ marginTop: "10px", marginBottom: "10px" }} variant="outlined" fullWidth
-                       />
-            <br />
-             
-            <TextField id="outlined-basic" label="Subject" sx={{ marginTop: "10px", marginBottom: "10px" }} variant="outlined" fullWidth
-                       />
-            <br />
-             
-            <TextField id="outlined-basic" label="Message" sx={{ marginTop: "10px", marginBottom: "10px" }} variant="outlined" fullWidth
-                       />
+            <TextField id="outlined-basic" label="Your Name" sx={{ marginTop: "10px", marginBottom: "10px",alignSelf:'center' }} variant="outlined" fullWidth />
+            <br />            
+            <TextField id="outlined-basic" label="Your Email" sx={{ marginTop: "10px", marginBottom: "10px" }} variant="outlined" fullWidth    />
+            <br />             
+            <TextField id="outlined-basic" label="Subject" sx={{ marginTop: "10px", marginBottom: "10px" }} variant="outlined" fullWidth  />
+            <br />             
+            <TextField id="outlined-basic" label="Message" sx={{ marginTop: "10px", marginBottom: "10px" }} variant="outlined" fullWidth  />
             <br />
             <Button
               variant="contained"
              // onClick={loginUserAccount}
-             style={{alignItems:"center", marginTop:10,width:'100%',marginBottom:10}}
+             style={{alignItems:"center", marginTop:10,width:'100%'}}
             >
               Submit
             </Button>

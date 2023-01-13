@@ -1,16 +1,22 @@
-import AppointmentTableHP from './AppointmentTableHP';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
+import AddButton from "../../components/buttons/AddButton";
+import AddAppointmentModal from "./modals1/AddAppointmentModal";
+import AppointmentTableHP from "./AppointmentTableHP";
+import EditAppointmentModel from "./modals1/EditAppointmentModal";
 
 const AppointmentHP = () => {
   return (
     <div>
-      <Typography variant="h4" gutterBottom style={{color:'gray'}}>My Appointment</Typography>  
+      <Typography variant="h4" gutterBottom style={{color:'gray',marginBottom:'2%'}}>Appointments</Typography>  
           <Divider />
-          <div style={{width:'80%',marginLeft:'10%'}}>
-          <AppointmentTableHP />
+          <Divider />
 
-          </div>
+   
+
+      <EditAppointmentModel/>
+      <AppointmentTableHP/>
+
     </div>
   );
 };

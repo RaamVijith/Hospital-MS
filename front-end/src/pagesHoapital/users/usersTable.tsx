@@ -63,7 +63,7 @@ const UsersTable=()=> {
 
   //fetch API Hear************************************************
     useEffect(() => {
-      fetch("https://jsonplaceholder.typicode.com/posts")
+      fetch("https://jsonplaceholder.typicode.co")
         .then((data) => data.json())
         .then((data) => setTableData(data))
   
@@ -81,13 +81,16 @@ const UsersTable=()=> {
   };
 
   return (
-    <Paper sx={{ width: '90%', overflow: 'hidden',marginTop:'2%' }}>
+    <Paper sx={{  overflow: 'hidden',marginTop:'2%' }}>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell style={{backgroundColor:'#2c73d2'}} >User Id</StyledTableCell>
-            <StyledTableCell style={{backgroundColor:'#2c73d2'}} >Name</StyledTableCell>
+            <StyledTableCell style={{backgroundColor:'#2c73d2'}} >First Name</StyledTableCell>
+            <StyledTableCell style={{backgroundColor:'#2c73d2'}} >Last Name</StyledTableCell>
+            <StyledTableCell style={{backgroundColor:'#2c73d2'}} >Email</StyledTableCell>
+            <StyledTableCell style={{backgroundColor:'#2c73d2'}} >Mobile No</StyledTableCell>
             <StyledTableCell style={{backgroundColor:'#2c73d2'}} >Gender</StyledTableCell>
             <StyledTableCell style={{backgroundColor:'#2c73d2'}} >Age</StyledTableCell>
             <StyledTableCell style={{backgroundColor:'#2c73d2'}} >Address</StyledTableCell>
@@ -97,11 +100,12 @@ const UsersTable=()=> {
         </TableHead>
         <TableBody>
           {tableData.map((row:any) => (
-            <StyledTableRow key={row.user_id}>
-              <StyledTableCell component="th" scope="row">
-                {row.user_id}
-              </StyledTableCell>
-              <StyledTableCell >{row.name}</StyledTableCell>
+            <StyledTableRow key={row._id}>
+              <StyledTableCell component="th" scope="row">{row._id}</StyledTableCell>
+              <StyledTableCell >{row.first_name}</StyledTableCell>
+              <StyledTableCell >{row.last_name}</StyledTableCell>
+              <StyledTableCell >{row.email}</StyledTableCell>
+              <StyledTableCell >{row.mobile_no}</StyledTableCell>
               <StyledTableCell >{row.gender}</StyledTableCell>
               <StyledTableCell >{row.age}</StyledTableCell>
               <StyledTableCell >{row.address}</StyledTableCell>
