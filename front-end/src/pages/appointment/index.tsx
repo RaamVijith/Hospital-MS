@@ -11,6 +11,7 @@ const Appointment = () => {
       <Typography variant="h4" gutterBottom style={{color:'gray'}}>My Appointment</Typography>  
           <Divider />
           <AddButton title="add new Appointment" />
+          <div style={{height:20}}></div>
    
 
       <EditAppointmentModel/>

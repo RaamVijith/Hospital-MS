@@ -11,7 +11,8 @@ const VaccinesHP = () => {
       <Typography variant="h4" gutterBottom style={{color:'gray'}}>Vaccines</Typography>  
           <Divider />
           <AddButton title="add new Vaccines" />
-   
+          <div style={{height:20}}></div>
+
 
       <EditAppointmentModel/>
       <AddAppointmentModal/>

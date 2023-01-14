@@ -11,7 +11,8 @@ const HospitalsAD = () => {
       <Typography variant="h4" gutterBottom style={{color:'gray'}}>Hospitals</Typography>  
           <Divider />
           <AddButton title="add new Hospital" />
-   
+          <div style={{height:20}}></div>
+
 
       <EditAppointmentModel/>
       <AddAppointmentModal/>

@@ -80,10 +80,12 @@ const HospitalTable=()=> {
 
   return (
     <Paper sx={{ width: '70%', overflow: 'hidden',marginLeft:'10%',marginTop:'2%' }}>
-       <TextField id="outlined-basic" label="Search" variant="outlined" size="small" 
+     {/**
+      * <TextField id="outlined-basic" label="Search" variant="outlined" size="small" 
                    sx={{margin: "10px 0px 10px 30px",backgroundColor: "white","& label.Mui-focused": {color: "#F27405",}, 
                        "& .MuiOutlinedInput-root": {"&.Mui-focused fieldset": {borderColor: "#F27405",},},}}
                         />
+      */}  
       
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table" >

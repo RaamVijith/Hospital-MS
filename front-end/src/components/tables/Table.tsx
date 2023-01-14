@@ -50,14 +50,14 @@ const CustomTable = ({
       <TableContainer>
         <Table stickyHeader>
           <TableHead>
-            <TableRow>
+            <TableRow >
               {columns.map((col) => (
-                <TableCell key={col.id} style={{ minWidth: col.minWidth }}>
+                <TableCell  key={col.id} style={{backgroundColor:'#2c73d2', minWidth: col.minWidth }}>
                   {col.label}
                 </TableCell>
               ))}
-              <TableCell>Edit</TableCell>
-              <TableCell>Delete</TableCell>
+              <TableCell style={{backgroundColor:'#2c73d2',}}>Edit</TableCell>
+              <TableCell style={{backgroundColor:'#2c73d2',}}>Delete</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>{children}</TableBody>

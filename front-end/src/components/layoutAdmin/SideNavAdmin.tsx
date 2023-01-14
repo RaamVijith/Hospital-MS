@@ -22,7 +22,7 @@ const listItems = [
   { title: "Vaccines", icon: <VaccinesIcon />, to: "/vaccinesAD" },
   { title: "Hospitals", icon: <LocalHospitalIcon />, to: "/hospitalsAD" },
   { title: "Setting", icon: <VaccinesIcon />, to: "/settingAD" },
-  { title: "My Account", icon: <LocalHospitalIcon />, to: "/myAccountAD" },
+  { title: "My Account", icon:<AccountCircleIcon />, to: "/myAccountAD" },
 
 
 ];
