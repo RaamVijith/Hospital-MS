@@ -16,11 +16,15 @@ const SettingTableHP=()=>{
                        />
             <br />
             
-            <TextField id="outlined-basic" label="New Password" sx={{ marginTop: "10px", marginBottom: "10px" }} variant="outlined" fullWidth
+            <TextField id="outlined-basic" label="New Password"
+            type="password" 
+            sx={{ marginTop: "10px", marginBottom: "10px" }} variant="outlined" fullWidth
                        />
             <br />
             
-            <TextField id="outlined-basic" label="New password" sx={{ marginTop: "10px", marginBottom: "10px" }} variant="outlined" fullWidth
+            <TextField id="outlined-basic" label="New password"                       
+            type="password"
+            sx={{ marginTop: "10px", marginBottom: "10px" }} variant="outlined" fullWidth
                        />
             <br />
 

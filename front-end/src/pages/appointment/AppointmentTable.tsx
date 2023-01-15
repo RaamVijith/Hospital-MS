@@ -11,6 +11,7 @@ import Box from "@mui/material/Box";
 import { IconButton, Tooltip } from "@mui/material";
 import DeleteAppointmentModel from "./modals1/DeleteAppointmentModal";
 
+
 const columns: IColumn[] = [
   { id: "no", label: "Appointment no" },
   { id: "hospital", label: "Hospital" },
@@ -28,6 +29,8 @@ const AppointmentTableCopy = () => {
 
   return (
     <>
+    
+   
     <DeleteAppointmentModel /> 
       <CustomTable
         columns={columns}
