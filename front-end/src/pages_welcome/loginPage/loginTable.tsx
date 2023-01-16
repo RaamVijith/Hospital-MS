@@ -73,9 +73,11 @@ const routeRegister = () =>{
   return (
     
     <Box sx={{ bgcolor: 'background.paper', width:"70%", borderRadius:2,marginTop:10 }}>
+
             {Object.keys(formErrors).length === 0 && isSubmit ? (
-        <>{  navigate('/appointment')        }</>
-      ) : ( <></> )}
+               <>{  navigate('/appointment')}</>
+                  ) : ( <></> )}
+                  
             <form onSubmit={handleSubmit}>
             <b style={{paddingLeft:'8%',fontSize:35}}>Login to your account</b>    
              <Divider style={{marginTop:'2%'}}/>

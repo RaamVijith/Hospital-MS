@@ -7,8 +7,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 
 
-const UserRegister=()=>{
-  const initialValues:any = { first_name:"",last_name:"",date:"",age:"",phone_number:"",address:"",email: "", password: "" };
+const HospitalRegister=()=>{
+  const initialValues:any = { registation_number:"",name:"",address:"",email:"",password: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
@@ -37,21 +37,12 @@ const handleSubmit = (e:any) => {
     const errors:any = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     
-    if (!values.first_name) {
-      errors.first_name = "First Name is required!";
+    if (!values.registration_number) {
+      errors.registration_number = "Registration Number is required!";
     }
-    if (!values.last_name) {
-      errors.last_name = "Last Name is required!";
-    }
-    if (!values.date) {
-      errors.date = "Date of Birth is required!";
-    }
-    if (!values.age) {
-      errors.age = "Age is required!";
-    }
-    if (!values.phone_number) {
-      errors.phone_number = "Phone Number is required!";
-    }
+    if (!values.name) {
+      errors.name = "Hospital Name is required!";
+    }    
     if (!values.address) {
       errors.address = "Address is required!";
     }
@@ -74,71 +65,27 @@ const handleSubmit = (e:any) => {
     <div>
       {/**Page Navigation */}
       {Object.keys(formErrors).length === 0 && isSubmit ? (
-               <>{  navigate('/appointment')}</>
+               <>{  navigate('/appointmentHP')}</>
                   ) : ( <></> )}
     <form onSubmit={handleSubmit}>
 
     <div style={{alignContent:'center',justifyContent:'center',alignItems:'center',alignSelf:'center',paddingLeft:50,paddingRight:50}}>
-                <TextField id="outlined-basic" label="First Name" 
+                <TextField id="outlined-basic" label="Hospital Registration Number" 
                 sx={{ marginTop: "10px", marginBottom: "2px",alignSelf:'center' }} 
                 variant="outlined" fullWidth
-                name="first_name"
-                value={formValues.first_name}
+                name="registration_number"
+                value={formValues.registration_number}
                 onChange={handleChange} />
-               <a style={{color:'red'}}>{formErrors.first_name}</a>
+               <a style={{color:'red'}}>{formErrors.registration_number}</a>
 
-                <TextField id="outlined-basic" label="Last Name" 
+                <TextField id="outlined-basic" label="Hospital Name" 
                 sx={{ marginTop: "10px", marginBottom: "10px" }}
                 variant="outlined" fullWidth
-                name="last_name"
-                value={formValues.last_name}
+                name="name"
+                value={formValues.name}
                 onChange={handleChange} />
-               <a style={{color:'red'}}>{formErrors.last_name}</a>
-                <br/>
-                <a style={{color:'GrayText'}}>Date of Birth</a>
-                <br/>
-
-                <TextField id="outlined-basic" 
-                sx={{ marginTop: "10px", marginBottom: "10px",width:170 }}
-                variant="outlined" fullWidth
-                name="date"
-                type="date"
-                value={formValues.date}
-                onChange={handleChange} />
-                <br/>
-                <a style={{color:'red'}}>{formErrors.date}</a>
-
-                <div>
-                <FormControl>
-                      <FormLabel   id="demo-row-radio-buttons-group-label">Gender</FormLabel>
-                      <RadioGroup
-                        row
-                        aria-labelledby="demo-row-radio-buttons-group-label"
-                        name="row-radio-buttons-group"                       
-                      >
-                        <FormControlLabel value="female" control={<Radio />} label="Female" />
-                        <FormControlLabel value="male" control={<Radio />} label="Male" />
-                      
-                      </RadioGroup>
-                </FormControl>
-                </div>
+               <a style={{color:'red'}}>{formErrors.name}</a>
                 
-                <TextField id="outlined-basic" label="Age" 
-                sx={{ marginTop: "10px", marginBottom: "2px",alignSelf:'center' }} 
-                variant="outlined" fullWidth
-                name="age"
-                value={formValues.age}
-                onChange={handleChange} />
-                <a style={{color:'red'}}>{formErrors.age}</a>
-
-                <TextField id="outlined-basic" label="Phone Number"
-                sx={{ marginTop: "10px", marginBottom: "2px" }} 
-                variant="outlined" fullWidth 
-                name="phone_number"
-                value={formValues.phone_number}
-                onChange={handleChange} />
-               <a style={{color:'red'}}>{formErrors.phone_number}</a>
-
                 <TextField id="outlined-basic" label="Address" 
                 sx={{ marginTop: "10px", marginBottom: "2px",alignSelf:'center' }} 
                 variant="outlined" fullWidth
@@ -176,4 +123,4 @@ const handleSubmit = (e:any) => {
     )
 }
 
-export default UserRegister
+export default HospitalRegister

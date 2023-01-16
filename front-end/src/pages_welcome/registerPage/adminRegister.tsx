@@ -7,7 +7,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 
 
-const UserRegister=()=>{
+const AdminRegister=()=>{
   const initialValues:any = { first_name:"",last_name:"",date:"",age:"",phone_number:"",address:"",email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
@@ -74,7 +74,7 @@ const handleSubmit = (e:any) => {
     <div>
       {/**Page Navigation */}
       {Object.keys(formErrors).length === 0 && isSubmit ? (
-               <>{  navigate('/appointment')}</>
+               <>{  navigate('/userAD')}</>
                   ) : ( <></> )}
     <form onSubmit={handleSubmit}>
 
@@ -114,7 +114,8 @@ const handleSubmit = (e:any) => {
                       <RadioGroup
                         row
                         aria-labelledby="demo-row-radio-buttons-group-label"
-                        name="row-radio-buttons-group"                       
+                        name="row-radio-buttons-group"
+                       
                       >
                         <FormControlLabel value="female" control={<Radio />} label="Female" />
                         <FormControlLabel value="male" control={<Radio />} label="Male" />
@@ -176,4 +177,4 @@ const handleSubmit = (e:any) => {
     )
 }
 
-export default UserRegister
+export default AdminRegister
