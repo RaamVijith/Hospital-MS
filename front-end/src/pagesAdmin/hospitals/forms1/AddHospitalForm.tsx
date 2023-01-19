@@ -3,51 +3,54 @@ import {
   Grid,
   TextField,
   DialogActions,
-  Select,
   FormControl,
-  InputLabel,
   CircularProgress,
 } from "@mui/material";
-import MenuItem from "@mui/material/MenuItem";
+import * as React from 'react';
 import { Formik } from "formik";
 import { useMutation, useQueryClient } from "react-query";
-import { useShopContext } from "../../../context/ShopContext";
-import { IShop, apiClient } from "../../../api/Demo/client";
+import { IHospital } from "../../../api/clients";
+import { hospitalClient } from "../../../api/hospital";
 import { useGlobalContext } from "../../../context/GlobalContext";
+import { Dayjs } from 'dayjs';
 
-const REGIONS = ["region a", "region b", "region c", "region d"];
 
-const EditShopForm = () => {
-  const { setEditModalOpen, setLoading, setSnackMessage, setSnackOpen } =
-    useGlobalContext();
-  const { selectedShop, setSelectedShop } = useShopContext();
+const initialValues = {
+  _id:"",
+  name: "",
+  email: "",
+  phone_no:"",
+  address: ""
+};
+
+
+
+const AddHospitalForm = () => {
+  const { setAddModalOpen, setLoading, setSnackMessage, setSnackOpen } =useGlobalContext();
+  const { createHospital } = hospitalClient;
+  const { isLoading, mutate } = useMutation(
+    async (input: Omit<IHospital, "_id">) => await createHospital(input)
+  );
+
   const queryClient = useQueryClient();
 
-  const { mutate, isLoading } = useMutation(
-    async (input: Partial<IShop>) =>
-      await apiClient.patch<{ shop: IShop; message: string }>(
-        `/shops/update/${selectedShop?._id}`,
-        { input }
-      )
-  );
 
   return (
     <Formik
-      initialValues={{
-        name: selectedShop?.name,
-        address: selectedShop?.address,
-        region: selectedShop?.region,
-      }}
+      initialValues={initialValues}
       onSubmit={(values, { resetForm }) => {
+
         if (isLoading) setLoading(true);
         mutate(
-          { ...values },
+          { ...values,
+         
+          },
           {
             onSuccess: (data) => {
-              queryClient.invalidateQueries("all shops");
-              setSelectedShop(null);
+              queryClient.invalidateQueries("all hospitals");
+
               setLoading(false);
-              setSnackMessage(data.data.message);
+              setSnackMessage(data.message);
               setSnackOpen(true);
             },
             onError: (error: any) => {
@@ -57,21 +60,22 @@ const EditShopForm = () => {
             },
             onSettled: () => {
               setLoading(false);
-              setEditModalOpen(false);
+              setAddModalOpen(false);
               resetForm();
             },
           }
-        );
+        );  console.log(mutate)
+
       }}
     >
       {({ handleChange, handleSubmit, values }) => (
         <form onSubmit={handleSubmit}>
-          <Grid container rowGap={1} columnGap={1}>
+          <Grid container rowGap={2} columnGap={2} >
             <Grid item xs={6}>
               <FormControl fullWidth>
                 <TextField
-                  name="name"
-                  label="Name"
+                  name="hospital_name"
+                  label="Hospital Name"
                   fullWidth
                   value={values.name}
                   onChange={handleChange}
@@ -80,23 +84,28 @@ const EditShopForm = () => {
             </Grid>
             <Grid item xs={6}>
               <FormControl fullWidth>
-                <InputLabel>select region</InputLabel>
-                <Select
-                  onChange={handleChange}
+                <TextField
+                  name="phone_no"
+                  label="Phone No"
                   fullWidth
-                  name="region"
-                  value={values.region}
-                >
-                  {REGIONS.map((item, index) => (
-                    <MenuItem key={index} value={item}>
-                      {item}
-                    </MenuItem>
-                  ))}
-                </Select>
+                  value={values.phone_no}
+                  onChange={handleChange}
+                />
               </FormControl>
             </Grid>
-
-            <Grid item xs={12}>
+           
+            <Grid item xs={6}>
+              <FormControl fullWidth>
+                <TextField
+                  name="email"
+                  label="Email"
+                  fullWidth
+                  value={values.email}
+                  onChange={handleChange}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={6}>
               <FormControl fullWidth>
                 <TextField
                   name="address"
@@ -106,14 +115,16 @@ const EditShopForm = () => {
                   onChange={handleChange}
                 />
               </FormControl>
-            </Grid>
+            </Grid>            
+
+            
           </Grid>
           <DialogActions>
             <Button variant="contained" type="submit">
-              {isLoading ? <CircularProgress /> : "update"}
+              {isLoading ? <CircularProgress /> : "add"}
             </Button>
             <Button
-              onClick={() => setEditModalOpen(false)}
+              onClick={() => setAddModalOpen(false)}
               variant="outlined"
               color="error"
             >
@@ -126,4 +137,4 @@ const EditShopForm = () => {
   );
 };
 
-export default EditShopForm;
+export default AddHospitalForm;

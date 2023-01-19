@@ -1,21 +1,20 @@
 import CustomTable, { IColumn } from "../../components/tables/Table";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useAppointmentContext } from "../../context/AppointmentContext";
+import { useHospitalContext } from "../../context/HospitalContext";
 import { useGlobalContext } from "../../context/GlobalContext";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import { useState } from "react";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
 import { IconButton, Tooltip } from "@mui/material";
-import DeleteAppointmentModel from "./modals1/DeleteAppointmentModal";
+import DeleteHospitalModel from "./modals1/DeleteHospitalModal";
 
 const columns: IColumn[] = [
   { id: "_id", label: "Hospital Id" },
   { id: "name", label: "Name" },
-  { id: "Location", label: "Phone" },
   { id: "email", label: "Email" },
+  { id: "phone_no", label: "Phone No" },
+  { id: "address", label: "address" },
 
 ];
 
@@ -23,21 +22,21 @@ const HospitalTableAD = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const { setDeleteModalOpen, setEditModalOpen } = useGlobalContext();
-  const { setSelectedAppointment, appointment } = useAppointmentContext();
+  const { setSelectedHospital, hospital } = useHospitalContext();
 
 
   return (
     <>
-    <DeleteAppointmentModel /> 
+    <DeleteHospitalModel /> 
       <CustomTable
         columns={columns}
-        count={appointment.length!}
+        count={hospital.length!}
         page={page}
         rowsPerPage={rowsPerPage}
         setPage={setPage}
         setRowsPerPage={setRowsPerPage}
       >
-        {appointment
+        {hospital
           .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
           .map((row, setkey) => {
             return (
@@ -62,7 +61,7 @@ const HospitalTableAD = () => {
                   <Tooltip title="edit">
                     <IconButton
                       onClick={() => {
-                        setSelectedAppointment(row);
+                        setSelectedHospital(row);
                         setEditModalOpen(true);
                       }}
                     >
@@ -86,7 +85,7 @@ const HospitalTableAD = () => {
                   <Tooltip title="delete">
                     <IconButton
                       onClick={() => {
-                        setSelectedAppointment(row);
+                        setSelectedHospital(row);
                         setDeleteModalOpen(true);
                       }}
                     >

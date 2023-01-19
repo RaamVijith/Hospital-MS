@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import { useGlobalContext } from "../../../context/GlobalContext";
 import { useShopContext } from "../../../context/ShopContext";
 import { useMutation, useQueryClient } from "react-query";
-import { shopClient } from "../../../api/shops";
+import { shopClient } from "../../../api/Demo/shops";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const DeleteShopModel = () => {

@@ -11,8 +11,8 @@ import {
 import MenuItem from "@mui/material/MenuItem";
 import { Formik } from "formik";
 import { useMutation, useQueryClient } from "react-query";
-import { IShop } from "../../../api/client";
-import { shopClient } from "../../../api/shops";
+import { IShop } from "../../../api/Demo/client";
+import { shopClient } from "../../../api/Demo/shops";
 import { useGlobalContext } from "../../../context/GlobalContext";
 
 const initialValues = {

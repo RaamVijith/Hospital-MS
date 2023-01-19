@@ -12,9 +12,9 @@ const Demo = () => {
       <Typography variant="h4" gutterBottom style={{color:'gray'}}>My Appointment</Typography>  
           <Divider />
           <AddButton title="add new Appointment" />
-        <EditShopModel />
-        <AddShopModal />
-         <ShopTable />  
+          <EditShopModel />
+          <AddShopModal />
+          <ShopTable />  
 
   
 

@@ -16,10 +16,7 @@ export interface IUsers {
   gender:string;
   address:string
   mobile_no:string;
-  appointment:IAppointment;
-  hospital:IHospital;
-  vaccine:IVaccine;
-  vaccine_Dose:IVaccineDose;
+
 }
 
 export interface IAppointment {
@@ -37,15 +34,15 @@ export interface IHospital {
   name: string;
   email:string;
   address: string;
-  available_vaccine:string;
+  phone_no:string;
 }
 
 export interface IVaccine {
   _id: string;
   name: string;
-  quantity:string;
+  quantity?:string;
   type:string;
-  hospital:IHospital;
+  status?:string;
 }
 
 export interface IMyVaccine {

@@ -1,15 +1,15 @@
 import Modal from "../../../components/modals/MainModal";
 import DialogContent from "@mui/material/DialogContent";
-import AddAppointmentForm from "../forms1/AddAppointmentForm";
+import AddVaccineForm from "../forms1/AddVaccineForm";
 
-const AddAppointmentModal = () => {
+const AddVaccineModal = () => {
   return (
     <Modal title="add new Vaccine" type="add">
       <DialogContent>
-        <AddAppointmentForm />
+        <AddVaccineForm />
       </DialogContent>
     </Modal>
   );
 };
 
-export default AddAppointmentModal;
+export default AddVaccineModal;

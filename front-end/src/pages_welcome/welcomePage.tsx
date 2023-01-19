@@ -5,8 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import { useNavigate } from "react-router-dom";
 import welcomePage from "../../images/welcome2.png";
 import logo from "../../images/logo.png"
-import Box from "@mui/material/Box";
-import {TextField,Button,FormControl} from "@mui/material";
+import {Button} from "@mui/material";
 
 
 const WelcomePage=()=>{
@@ -14,21 +13,18 @@ const WelcomePage=()=>{
         width: "100%",
         height: "900px",
         backgroundImage: "url(" + welcomePage + ")",
-        marginTop:'-11%'
-        
+        marginTop:'-11%'        
     };
     
-    let navigate = useNavigate(); 
+let navigate = useNavigate(); 
   const routeChange = () =>{     
     let path = `/login`; 
     navigate(path);
   }
-
   const routeAbout = () =>{   
     let path = `/about`; 
     navigate(path);
-  }
-  
+  }  
   const routeContact = () =>{     
       let path = `/contact`; 
       navigate(path);
@@ -77,7 +73,7 @@ const WelcomePage=()=>{
                        
                     </b>
                     <div style={{marginTop:-50}}>
-                    <b style={{color:'white',fontSize:110,marginLeft:'20%'}}>Boost Your Health
+                    <b  style={{color:'white',fontSize:110,marginLeft:'20%'}}>Boost Your Health
                     
                     </b></div>
                     <div style={{fontSize:35,marginLeft:'35%'}}>

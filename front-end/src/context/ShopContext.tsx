@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useReducer } from "react";
 import { useQuery } from "react-query";
-import { IShop } from "../api/client";
-import { shopClient } from "../api/shops";
+import { IShop } from "../api/Demo/client";
+import { shopClient } from "../api/Demo/shops";
 
 export interface IAction {
   type: "SET_ALL_SHOPS" | "SET_SELECTED_SHOP";

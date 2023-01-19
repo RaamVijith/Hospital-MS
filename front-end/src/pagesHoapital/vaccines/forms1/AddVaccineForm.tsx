@@ -8,40 +8,31 @@ import {
   InputLabel,
   CircularProgress,
 } from "@mui/material";
-import * as React from 'react';
 import MenuItem from "@mui/material/MenuItem";
 import { Formik } from "formik";
 import { useMutation, useQueryClient } from "react-query";
-import { IAppointment } from "../../../api/clients";
-import { appointmentClient } from "../../../api/appointment";
+import { IVaccine } from "../../../api/clients";
+import { vaccineClient } from "../../../api/vaccine";
 import { useGlobalContext } from "../../../context/GlobalContext";
-import { Dayjs } from 'dayjs';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+
 
 const initialValues = {
-  no:"",
-  time: "",
-  status: "",
-  date: "",
-  hospital:"",
-  type:""
+  _id:"",
+  name: "",
+  type: "",
+  status: ""
+ 
 };
 
-const STATUS = ["done", "pending", "cancel"];
+const STATUS = ["Available", "Not Available"];
 const VACCINE_TYPE = ["pfizer", "sinopharm", "moderna"];
 
 
-const AddAppointmentForm = () => {
-  const [datevalue, setDateValue] = React.useState<Dayjs | null>(null);
-  const [timevalue, setTimeValue] = React.useState<Dayjs | null>(null);
-  const { setAddModalOpen, setLoading, setSnackMessage, setSnackOpen } =
-    useGlobalContext();
-  const { createAppointment } = appointmentClient;
+const AddVaccineForm = () => {
+  const { setAddModalOpen, setLoading, setSnackMessage, setSnackOpen } =useGlobalContext();
+  const { createVaccine } = vaccineClient;
   const { isLoading, mutate } = useMutation(
-    async (input: Omit<IAppointment, "_id">) => await createAppointment(input)
+    async (input: Omit<IVaccine, "_id">) => await createVaccine(input)
   );
 
   const queryClient = useQueryClient();
@@ -54,14 +45,12 @@ const AddAppointmentForm = () => {
 
         if (isLoading) setLoading(true);
         mutate(
-          { ...values,
-            date: String(datevalue),
-            time: String(timevalue),
+          { ...values
 
           },
           {
             onSuccess: (data) => {
-              queryClient.invalidateQueries("all appointments");
+              queryClient.invalidateQueries("all vaccines");
 
               setLoading(false);
               setSnackMessage(data.message);
@@ -84,14 +73,14 @@ const AddAppointmentForm = () => {
     >
       {({ handleChange, handleSubmit, values }) => (
         <form onSubmit={handleSubmit}>
-          <Grid container rowGap={2} >
+          <Grid container rowGap={2} columnGap={2}>
             <Grid item xs={6}>
               <FormControl fullWidth>
                 <TextField
-                  name="hospital"
-                  label="Hospital"
+                  name="Vaccine_Name"
+                  label="Vaccine Name"
                   fullWidth
-                  value={values.hospital}
+                  value={values.name}
                   onChange={handleChange}
                 />
               </FormControl>
@@ -131,38 +120,8 @@ const AddAppointmentForm = () => {
               </FormControl>
             </Grid>
             
-            <Grid item xs={6}>
-            <FormControl fullWidth>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker
-                label="Date"
-                value={datevalue}
-                onChange={(newValue:any) => {
-                  setDateValue(newValue);
-                }}
-                renderInput={(params) => <TextField {...params} />}
-              />
-            </LocalizationProvider>
-            </FormControl>
-            </Grid>
-
-
-            <Grid item xs={6}>
-            <FormControl fullWidth>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <TimePicker
-                    label="Time"
-                    value={timevalue}
-                    onChange={(newValue) => {
-                      setTimeValue(newValue);
-                    }}
-                    renderInput={(params) => <TextField {...params} />}
-                  />
-            </LocalizationProvider>
-            </FormControl>
-            </Grid>
-
             
+
           </Grid>
           <DialogActions>
             <Button variant="contained" type="submit">
@@ -182,4 +141,4 @@ const AddAppointmentForm = () => {
   );
 };
 
-export default AddAppointmentForm;
+export default AddVaccineForm;

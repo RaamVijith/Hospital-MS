@@ -1,8 +1,8 @@
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import AddButton from "../../components/buttons/AddButton";
-import AddAppointmentModal from "./modals1/AddAppointmentModal";
-import EditAppointmentModel from "./modals1/EditAppointmentModal";
+import AddVaccineModal from "./modals1/AddVaccineModal";
+import EditVaccineModel from "./modals1/EditVaccineModal";
 import VaccineTableHP from './vaccinesTable';
 import {TextField} from "@mui/material";
 
@@ -22,8 +22,8 @@ const VaccinesHP = () => {
           <div style={{height:5}}></div>
 
 
-      <EditAppointmentModel/>
-      <AddAppointmentModal/>
+      <EditVaccineModel/>
+      <AddVaccineModal/>
       <VaccineTableHP/>
     </div>
   );

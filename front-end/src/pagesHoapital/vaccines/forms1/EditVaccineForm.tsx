@@ -12,8 +12,8 @@ import * as React from 'react';
 import MenuItem from "@mui/material/MenuItem";
 import { Formik } from "formik";
 import { useMutation, useQueryClient } from "react-query";
-import { IAppointment } from "../../../api/clients";
-import { appointmentClient } from "../../../api/appointment";
+import { useVaccineContext } from "../../../context/VaccinesContext";
+import { IVaccine, apiClient } from "../../../api/clients";
 import { useGlobalContext } from "../../../context/GlobalContext";
 import { Dayjs } from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -21,50 +21,43 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 
-const initialValues = {
-  no:"",
-  time: "",
-  status: "",
-  date: "",
-  hospital:"",
-  type:""
-};
-
 const STATUS = ["Available", "Not Available"];
 const VACCINE_TYPE = ["pfizer", "sinopharm", "moderna"];
 
-
-const AddAppointmentForm = () => {
+const EditVaccineForm = () => {
   const [datevalue, setDateValue] = React.useState<Dayjs | null>(null);
   const [timevalue, setTimeValue] = React.useState<Dayjs | null>(null);
-  const { setAddModalOpen, setLoading, setSnackMessage, setSnackOpen } =
+  const { setEditModalOpen, setLoading, setSnackMessage, setSnackOpen } =
     useGlobalContext();
-  const { createAppointment } = appointmentClient;
-  const { isLoading, mutate } = useMutation(
-    async (input: Omit<IAppointment, "_id">) => await createAppointment(input)
-  );
-
+  const { selectedVaccine, setSelectedVaccine} = useVaccineContext();
   const queryClient = useQueryClient();
 
+  const { mutate, isLoading } = useMutation(
+    async (input: Partial<IVaccine>) =>
+      await apiClient.patch<{ vaccine: IVaccine; message: string }>(
+        `/vaccine/update/${selectedVaccine?._id}`,
+        { input }
+      )
+  );
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={{
+        _id: selectedVaccine?._id,
+        name: selectedVaccine?.name,
+        status: selectedVaccine?.status,
+        type: selectedVaccine?.type,
+      }}
       onSubmit={(values, { resetForm }) => {
-
         if (isLoading) setLoading(true);
         mutate(
-          { ...values,
-            date: String(datevalue),
-            time: String(timevalue),
-
-          },
+          { ...values },
           {
             onSuccess: (data) => {
-              queryClient.invalidateQueries("all appointments");
-
+              queryClient.invalidateQueries("all vaccine");
+              setSelectedVaccine(null);
               setLoading(false);
-              setSnackMessage(data.message);
+              setSnackMessage(data.data.message);
               setSnackOpen(true);
             },
             onError: (error: any) => {
@@ -74,24 +67,23 @@ const AddAppointmentForm = () => {
             },
             onSettled: () => {
               setLoading(false);
-              setAddModalOpen(false);
+              setEditModalOpen(false);
               resetForm();
             },
           }
-        );  console.log(mutate)
-
+        );
       }}
     >
       {({ handleChange, handleSubmit, values }) => (
         <form onSubmit={handleSubmit}>
-          <Grid container rowGap={2} columnGap={2}>
+           <Grid container rowGap={2} columnGap={2}>
             <Grid item xs={6}>
               <FormControl fullWidth>
                 <TextField
                   name="Vaccine_Name"
                   label="Vaccine Name"
                   fullWidth
-                  value={values.hospital}
+                  value={values.name}
                   onChange={handleChange}
                 />
               </FormControl>
@@ -131,15 +123,13 @@ const AddAppointmentForm = () => {
               </FormControl>
             </Grid>
             
-            
-
           </Grid>
           <DialogActions>
             <Button variant="contained" type="submit">
-              {isLoading ? <CircularProgress /> : "add"}
+              {isLoading ? <CircularProgress /> : "update"}
             </Button>
             <Button
-              onClick={() => setAddModalOpen(false)}
+              onClick={() => setEditModalOpen(false)}
               variant="outlined"
               color="error"
             >
@@ -152,4 +142,4 @@ const AddAppointmentForm = () => {
   );
 };
 
-export default AddAppointmentForm;
+export default EditVaccineForm;

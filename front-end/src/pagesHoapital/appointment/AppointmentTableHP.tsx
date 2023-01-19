@@ -6,8 +6,6 @@ import { useGlobalContext } from "../../context/GlobalContext";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import { useState } from "react";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
 import { IconButton, Tooltip } from "@mui/material";
 import DeleteAppointmentModel from "./modals1/DeleteAppointmentModal";
 

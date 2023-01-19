@@ -1,15 +1,13 @@
 import CustomTable, { IColumn } from "../../components/tables/Table";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useAppointmentContext } from "../../context/AppointmentContext";
+import { useVaccineContext } from "../../context/VaccinesContext";
 import { useGlobalContext } from "../../context/GlobalContext";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import { useState } from "react";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
 import { IconButton, Tooltip } from "@mui/material";
-import DeleteAppointmentModel from "./modals1/DeleteAppointmentModal";
+import DeleteVaccineModel from "./modals1/DeleteVaccineModal";
 
 const columns: IColumn[] = [
   { id: "_id", label: "Vaccine Id" },
@@ -22,21 +20,21 @@ const VaccineTableHP = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const { setDeleteModalOpen, setEditModalOpen } = useGlobalContext();
-  const { setSelectedAppointment, appointment } = useAppointmentContext();
+  const { setSelectedVaccine, vaccines } = useVaccineContext();
 
 
   return (
     <>
-    <DeleteAppointmentModel /> 
+    <DeleteVaccineModel /> 
       <CustomTable
         columns={columns}
-        count={appointment.length!}
+        count={vaccines.length!}
         page={page}
         rowsPerPage={rowsPerPage}
         setPage={setPage}
         setRowsPerPage={setRowsPerPage}
       >
-        {appointment
+        {vaccines
           .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
           .map((row, setkey) => {
             return (
@@ -61,7 +59,7 @@ const VaccineTableHP = () => {
                   <Tooltip title="edit">
                     <IconButton
                       onClick={() => {
-                        setSelectedAppointment(row);
+                        setSelectedVaccine(row);
                         setEditModalOpen(true);
                       }}
                     >
@@ -85,7 +83,7 @@ const VaccineTableHP = () => {
                   <Tooltip title="delete">
                     <IconButton
                       onClick={() => {
-                        setSelectedAppointment(row);
+                        setSelectedVaccine(row);
                         setDeleteModalOpen(true);
                       }}
                     >

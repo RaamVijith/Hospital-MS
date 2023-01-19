@@ -4,24 +4,24 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import { useGlobalContext } from "../../../context/GlobalContext";
-import { useAppointmentContext } from "../../../context/AppointmentContext";
+import { useVaccineContext } from "../../../context/VaccinesContext";
 import { useMutation, useQueryClient } from "react-query";
-import { appointmentClient } from "../../../api/appointment";
+import { vaccineClient } from "../../../api/vaccine";
 import CircularProgress from "@mui/material/CircularProgress";
 
-const DeleteAppointmentModel = () => {
+const DeleteVaccineModel = () => {
   const { setDeleteModalOpen, setLoading, setSnackMessage, setSnackOpen } =
     useGlobalContext();
-  const { deleteAppointment } = appointmentClient;
-  const { selectedAppointment } = useAppointmentContext();
+  const { deleteVaccine } = vaccineClient;
+  const { selectedVaccine } = useVaccineContext();
 
   const queryClient = useQueryClient();
 
   const { isLoading, mutate } = useMutation(
-    async () => await deleteAppointment(selectedAppointment?._id!),
+    async () => await deleteVaccine(selectedVaccine?._id!),
     {
       onSuccess: (data) => {
-        queryClient.invalidateQueries("all appointment");
+        queryClient.invalidateQueries("all vaccine");
         setLoading(false);
         setSnackMessage(data.message);
         setSnackOpen(true);
@@ -39,10 +39,10 @@ const DeleteAppointmentModel = () => {
   );
 
   return (
-    <Modal title="delete appointment" type="delete">
+    <Modal title="delete vaccine" type="delete">
       <DialogContent>
         <DialogContentText>
-          Do you want to delete this Appointment from your list?
+          Do you want to delete this Vaccine from your list?
         </DialogContentText>
         <DialogActions>
           <Button
@@ -65,4 +65,4 @@ const DeleteAppointmentModel = () => {
   );
 };
 
-export default DeleteAppointmentModel;
+export default DeleteVaccineModel;

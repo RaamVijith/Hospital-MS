@@ -12,8 +12,8 @@ import * as React from 'react';
 import MenuItem from "@mui/material/MenuItem";
 import { Formik } from "formik";
 import { useMutation, useQueryClient } from "react-query";
-import { IAppointment } from "../../../api/clients";
-import { appointmentClient } from "../../../api/appointment";
+import { useAppointmentContext } from "../../../context/AppointmentContext";
+import { IAppointment, apiClient } from "../../../api/clients";
 import { useGlobalContext } from "../../../context/GlobalContext";
 import { Dayjs } from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -21,50 +21,45 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 
-const initialValues = {
-  no:"",
-  time: "",
-  status: "",
-  date: "",
-  hospital:"",
-  type:""
-};
-
 const STATUS = ["done", "pending", "cancel"];
 const VACCINE_TYPE = ["pfizer", "sinopharm", "moderna"];
 
-
-const AddAppointmentForm = () => {
+const EditAppointmentHPForm = () => {
   const [datevalue, setDateValue] = React.useState<Dayjs | null>(null);
   const [timevalue, setTimeValue] = React.useState<Dayjs | null>(null);
-  const { setAddModalOpen, setLoading, setSnackMessage, setSnackOpen } =
+  const { setEditModalOpen, setLoading, setSnackMessage, setSnackOpen } =
     useGlobalContext();
-  const { createAppointment } = appointmentClient;
-  const { isLoading, mutate } = useMutation(
-    async (input: Omit<IAppointment, "_id">) => await createAppointment(input)
-  );
-
+  const { selectedAppointment, setSelectedAppointment } = useAppointmentContext();
   const queryClient = useQueryClient();
 
+  const { mutate, isLoading } = useMutation(
+    async (input: Partial<IAppointment>) =>
+      await apiClient.patch<{ appointment: IAppointment; message: string }>(
+        `/appointment/update/${selectedAppointment?._id}`,
+        { input }
+      )
+  );
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={{
+        no: selectedAppointment?.no,
+        status: selectedAppointment?.status,
+        date: selectedAppointment?.date,
+        time: selectedAppointment?.time,
+        hospital: selectedAppointment?.hospital,
+        type: selectedAppointment?.type,
+      }}
       onSubmit={(values, { resetForm }) => {
-
         if (isLoading) setLoading(true);
         mutate(
-          { ...values,
-            date: String(datevalue),
-            time: String(timevalue),
-
-          },
+          { ...values },
           {
             onSuccess: (data) => {
-              queryClient.invalidateQueries("all appointments");
-
+              queryClient.invalidateQueries("all appointment");
+              setSelectedAppointment(null);
               setLoading(false);
-              setSnackMessage(data.message);
+              setSnackMessage(data.data.message);
               setSnackOpen(true);
             },
             onError: (error: any) => {
@@ -74,12 +69,11 @@ const AddAppointmentForm = () => {
             },
             onSettled: () => {
               setLoading(false);
-              setAddModalOpen(false);
+              setEditModalOpen(false);
               resetForm();
             },
           }
-        );  console.log(mutate)
-
+        );
       }}
     >
       {({ handleChange, handleSubmit, values }) => (
@@ -166,10 +160,10 @@ const AddAppointmentForm = () => {
           </Grid>
           <DialogActions>
             <Button variant="contained" type="submit">
-              {isLoading ? <CircularProgress /> : "add"}
+              {isLoading ? <CircularProgress /> : "update"}
             </Button>
             <Button
-              onClick={() => setAddModalOpen(false)}
+              onClick={() => setEditModalOpen(false)}
               variant="outlined"
               color="error"
             >
@@ -182,4 +176,4 @@ const AddAppointmentForm = () => {
   );
 };
 
-export default AddAppointmentForm;
+export default EditAppointmentHPForm;

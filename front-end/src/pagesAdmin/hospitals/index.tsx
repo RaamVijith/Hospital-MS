@@ -1,8 +1,8 @@
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import AddButton from "../../components/buttons/AddButton";
-import AddAppointmentModal from "./modals1/AddAppointmentModal";
-import EditAppointmentModel from "./modals1/EditAppointmentModal";
+import AddHospitalModal from "./modals1/AddHospitalModal";
+import EditHospitalModel from "./modals1/EditHospitalModal";
 import HospitalTableAD from './hospitalTable';
 import {TextField} from "@mui/material";
 
@@ -18,12 +18,9 @@ const HospitalsAD = () => {
                         />
           <AddButton title="add new Hospital" />
           </div>
-
           <div style={{height:5}}></div>
-
-
-      <EditAppointmentModel/>
-      <AddAppointmentModal/>
+      <EditHospitalModel/>
+      <AddHospitalModal/>
       <HospitalTableAD/>
 
     </div>

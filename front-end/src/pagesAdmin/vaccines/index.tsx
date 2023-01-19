@@ -1,8 +1,6 @@
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
-import AddButton from "../../components/buttons/AddButton";
-import AddAppointmentModal from "./modals1/AddAppointmentModal";
-import EditAppointmentModel from "./modals1/EditAppointmentModal";
+import EditVaccinesModel from "./modals1/EditVaccinesModal";
 import VaccineTableAD from './vaccinesTable';
 import {TextField} from "@mui/material";
 
@@ -18,7 +16,7 @@ const VaccinesAD = () => {
                        "& .MuiOutlinedInput-root": {"&.Mui-focused fieldset": {borderColor: "#F27405",},},}}
                         />
 
-      <EditAppointmentModel/>
+      <EditVaccinesModel/>
       <VaccineTableAD/>
 
     </div>

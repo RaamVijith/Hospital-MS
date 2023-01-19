@@ -1,7 +1,7 @@
 import CustomTable, { IColumn } from "../../components/tables/Table";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useAppointmentContext } from "../../context/AppointmentContext";
+import { useUsersContext } from "../../context/UsersContext";
 import { useGlobalContext } from "../../context/GlobalContext";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
@@ -9,14 +9,14 @@ import { useState } from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { IconButton, Tooltip } from "@mui/material";
-import DeleteAppointmentModel from "./modals1/DeleteAppointmentModal";
+import DeleteUsersModel from "./modals1/DeleteUsersModal";
 
 const columns: IColumn[] = [
-  { id: "user_id", label: "User Id" },
+  { id: "_id", label: "User Id" },
   { id: "first_name", label: "First Name" },
   { id: "last_name", label: "Last Name" },
   { id: "email", label: "Email" },
-  { id: "mobile no", label: "Mobile No" },
+  { id: "mobile_no", label: "Mobile No" },
   { id: "gender", label: "Gender" },
   { id: "age", label: "Age" },
 
@@ -26,21 +26,21 @@ const UsersTableAD = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const { setDeleteModalOpen, setEditModalOpen } = useGlobalContext();
-  const { setSelectedAppointment, appointment } = useAppointmentContext();
+  const { setSelectedUsers, users } = useUsersContext();
 
 
   return (
     <>
-    <DeleteAppointmentModel /> 
+    <DeleteUsersModel /> 
       <CustomTable
         columns={columns}
-        count={appointment.length!}
+        count={users.length!}
         page={page}
         rowsPerPage={rowsPerPage}
         setPage={setPage}
         setRowsPerPage={setRowsPerPage}
       >
-        {appointment
+        {users
           .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
           .map((row, setkey) => {
             return (
@@ -65,7 +65,7 @@ const UsersTableAD = () => {
                   <Tooltip title="edit">
                     <IconButton
                       onClick={() => {
-                        setSelectedAppointment(row);
+                        setSelectedUsers(row);
                         setEditModalOpen(true);
                       }}
                     >
@@ -89,7 +89,7 @@ const UsersTableAD = () => {
                   <Tooltip title="delete">
                     <IconButton
                       onClick={() => {
-                        setSelectedAppointment(row);
+                        setSelectedUsers(row);
                         setDeleteModalOpen(true);
                       }}
                     >

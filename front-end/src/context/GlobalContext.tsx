@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useReducer } from "react";
 import { useQuery } from "react-query";
-import { ICompany } from "../api/client";
-import { getAllCompanies } from "../api/company";
+import { ICompany } from "../api/Demo/client";
+import { getAllCompanies } from "../api/Demo/company";
 export interface IAction {
   type:
     | "SET_SNACKBAR"
